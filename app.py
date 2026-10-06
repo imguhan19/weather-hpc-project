@@ -1,17 +1,19 @@
+import os
+import sys
+from pathlib import Path
+
+# Ensure project root directory is added to sys.path before any local module import
+BASE_DIR = Path(__file__).resolve().parent
+if str(BASE_DIR) not in sys.path:
+    sys.path.insert(0, str(BASE_DIR))
+
 import streamlit as st
 import pandas as pd
 import numpy as np
-import os
-import sys
 import time
 import json
 import multiprocessing
 from datetime import datetime
-from pathlib import Path
-
-# Add project directory to path
-BASE_DIR = Path(__file__).resolve().parent
-sys.path.append(str(BASE_DIR))
 
 from config import DEFAULT_SAMPLE_PATH, DATA_DIR, RESULTS_DIR, AWS_S3_BUCKET, AWS_REGION
 from data.generate_sample import generate_weather_dataset
